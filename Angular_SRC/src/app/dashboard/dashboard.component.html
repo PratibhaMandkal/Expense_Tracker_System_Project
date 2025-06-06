@@ -1,0 +1,30 @@
+<div class="dashboard-container">
+    <h2>Welcome, {{ username }}</h2>
+
+    <div *ngIf="error" class="alert alert-danger">
+        {{ error }}
+    </div>
+
+    <div *ngIf="!error">
+        <p><strong>Email:</strong> {{ email }}</p>
+        <p><strong>Message:</strong> {{ message }}</p>
+
+        <h3>Your Expenses</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let expense of expenses">
+                    <td>{{ expense.month }}</td>
+                    <td>{{ expense.amount }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="btn btn-danger mt-3" (click)="logout()">Logout</button>
+    </div>
+</div>
